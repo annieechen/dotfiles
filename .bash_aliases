@@ -3,7 +3,7 @@ alias ls='ls -GpF'
 alias rm='rm -i'
 
 # randoms
-alias gp="grep -rni . --color=auto - e"
+alias grep="grep -rni . --color=auto - e"
 
 # shortcuts to folders
 alias dev='cd ~/dev'
@@ -28,6 +28,7 @@ alias resource="source ~/.bash_profile"
 alias gs="git status"
 alias gd="git diff"
 alias gl="git log"
+alias gp="git push"
 
 # tmux aliases
 alias tmls="tmux ls"
