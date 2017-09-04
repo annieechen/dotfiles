@@ -49,6 +49,9 @@ set nu
 " key mappings
 imap jj <esc>
 map ; :
+:command WQ wq
+:command Wq wq
+:command W w
 
 " set tab expands
 set expandtab
