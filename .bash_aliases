@@ -1,14 +1,15 @@
 # commands
-alias ls='ls -GpF'
-alias rm='rm -i'
+alias ls="ls -GpF"
+alias rm="rm -i"
+alias rmf="rm"
 
 # randoms
 alias grep="grep -rni . --color=auto - e"
 
 # shortcuts to folders
-alias dev='cd ~/dev'
-alias pl='cd ~/Documents/PLSC257; ls'
-alias ml='cd ~/Documents/STAT365; ls'
+alias dev="cd ~/dev"
+alias pl="cd ~/Documents/PLSC257; ls"
+alias ml="cd ~/Documents/STAT365; ls"
 
 # shortcuts to opening applications
 alias subl="open -a \"Sublime Text.app\""
@@ -29,6 +30,11 @@ alias gs="git status"
 alias gd="git diff"
 alias gl="git log"
 alias gp="git push"
+alias ga="git add"
+alias gc="git commit"
+
+alias gpatch="git commit --amend --no-edit"
+alias gpedit="git commit --amend"
 
 # tmux aliases
 alias tmls="tmux ls"

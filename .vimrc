@@ -1,4 +1,5 @@
 set nocompatible              " required
+set nohidden                  " for nerdtree? not sure, was in old config
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -9,28 +10,28 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'jnurmine/Zenburn'
-"Plugin 'vim-airline/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'ctrlpvim/ctrlp.vim'
-"Plugin 'easymotion/vim-easymotion'
-Plugin 'vim-syntastic/syntastic'
 Plugin 'scrooloose/nerdcommenter'
-
+Plugin 'vim-syntastic/syntastic'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jnurmine/Zenburn'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+
 filetype plugin indent on    " required
 
 " non vundle things start here
 " enable syntax highlighting
+syntax on
 syntax enable
 
 " color things
+set t_Co=256
 colorscheme zenburn
 " enable filetype plugins
 filetype plugin on
@@ -45,13 +46,10 @@ set ruler
 " turn line numbers on
 set nu
 
-" more mappings idk
+" key mappings
 imap jj <esc>
-imap jw <esc>:w
 map ; :
-map <nowait> 0o o<esc> 
 
-let mapleader = " "
 " set tab expands
 set expandtab
 set tabstop=4
@@ -92,21 +90,27 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " YouCompleteme Configs
 let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
-" Airline Configs
-set laststatus=2 "to always make vim-airline appear
-let g:airline_theme='zenburn' "set airline theme
-set noshowmode
+"Nerdtree things
+" open automatically on empty vim
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-" Syntastic Configs
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '!'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-nnoremap <c-n> :lnext<CR>
+let NERDTreeQuitOnOpen = 1 "quit when opening a file
+" toggle opening and closing
+nnoremap <Leader>f :NERDTreeToggle<Enter>
+
+
+"" Syntastic Configs
+"let g:syntastic_python_checkers = ['flake8']
+"let g:syntastic_error_symbol = '✗'
+"let g:syntastic_warning_symbol = '!'
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"nnoremap <c-n> :lnext<CR>
