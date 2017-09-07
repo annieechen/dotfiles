@@ -20,6 +20,8 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jnurmine/Zenburn'
+Plugin 'rdnetto/YCM-Generator'
+Plugin 'spf13/vim-autoclose'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
